@@ -1,0 +1,48 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row">
+    <form>
+        <div class="row mt-2">
+            <label for="ProductCount">Cовокупный объем продаж</label>
+            <input class="form-control" name="ProductCount" type="number" placeholder="2000" min="1" />
+        </div>
+        <div class="row mt-2">
+            <label for="ProductsCost">Cумма продаж</label>
+            <input class="form-control" name="ProductsCost" type="number" placeholder="50000000" min="1" />
+        </div>
+        <div class="row mt-2">
+            <label for="ProductsBuyers">Число уникальных покупателей</label>
+            <input class="form-control" name="ProductsBuyers" type="number" placeholder="400" min="1" />
+        </div>
+        <div class="row mt-2">
+            <button class="col-auto btn btn-primary" type="submit">
+                Поиск
+            </button>
+        </div>
+    </form>
+</div>
+<div class="row mt-2">
+    <table class="table table-bordered">
+        <tr>
+            <th>Название региона</th>
+            <th>Название товара</th>
+            <th>Количество единиц товара</th>
+            <th>Количество человек</th>
+            <th>Общая сумма</th>
+        </tr>
+        @foreach (var item in Model.TopRegionsProducts)
+        {
+            <tr>
+                <td>@item.RegionName</td>
+                <td>@item.ProductName</td>
+                <td>@item.TotalCount</td>
+                <td>@item.TotalBuyers</td>
+                <td>@item.TotalCost</td>
+            </tr>
+        }
+    </table>
+</div>
